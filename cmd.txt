@@ -1,0 +1,9 @@
+helm install airflow apache-airflow/airflow --namespace airflow --debug -f values.yaml
+
+
+helm show values apache-airflow/airflow > values.yaml
+
+
+helm upgrade --install airflow apache-airflow/airflow -n airflow -f values.yaml --debug
+
+kubectl delete ns airflow && kubectl create ns airflow

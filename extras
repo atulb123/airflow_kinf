@@ -1,0 +1,89 @@
+s3://airflowlogz/logs/
+
+
+{"aws_access_key_id":"_your_aws_access_key_id_", "aws_secret_access_key": "_your_aws_secret_access_key_"}
+
+
+my_conn_S3
+
+S3
+s3://AKIAUEX4HUD5N5B4LOUV:3TY1Rxj9lgwxia1S87isRGDanLbKe/oBKPgwGaEi@airflowlogz/logs/
+
+export AIRFLOW_CONN_AWS_DEFAULT: |
+ {
+  "conn_type": "aws",
+  "login": "AKIAUEX4HUD5N5B4LOUV",
+  "password": "3TY1Rxj9lgwxia1S87isRGDanLbKe/oBKPgwGaEi"
+}
+
+Access key ID
+AKIAUEX4HUD5N5B4LOUV
+
+Secret access key
+3TY1Rxj9lgwxia1S87isRGDanLbKe/oBKPgwGaEi
+
+
+
+AIRFLOW_CONN_AWS_DEFAULT: |
+    {
+        "id": 54,
+        "manufacturer": "ACME",
+        "location": "New York",
+        "createdAt": "2012-10-01 07:42:35.825565",
+        "description": "test",
+    }
+
+    ["airflow", "connections", "-a", "--conn_id", "s3_conn", "--conn_type", "s3", "--conn_extra", '{"aws_access_key_id": "AKIAUEX4HUD5N5B4LOUV", "aws_secret_access_key": "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"}']
+
+
+ {
+
+ {"aws_access_key_id": "AKIAUEX4HUD5N5B4LOUV", "aws_secret_access_key": "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"}
+ }
+
+
+
+export s3_conn: 'aws://AKIAUEX4HUD5N5B4LOUV:3TY1Rxj9lgwxia1S87isRGDanLbKe/oBKPgwGaEi'
+
+{"conn_type": "aws","login": "AKIAUEX4HUD5N5B4LOUV","password": "3TY1Rxj9lgwxia1S87isRGDanLbKe/oBKPgwGaEi"}
+
+
+- name: AIRFLOW_CONN_S3_CONN
+  conn_type: aws
+  description: ''
+  extra: ''
+  host: ''
+  login: AKIAUEX4HUD5N5B4LOUV
+  password: 3TY1Rxj9lgwxia1S87isRGDanLbKe/oBKPgwGaEi
+  port: null
+  schema: ''
+
+
+# the general format of a URI connection that is defined in your Dockerfile
+ENV AIRFLOW_CONN_MYCONNID='my-conn-type://login:password@host:port/schema?param1=val1&param2=val2'
+
+# an example of a connection to snowflake defined as a URI
+ENV AIRFLOW_CONN_S3_CONN='aws://AKIAUEX4HUD5N5B4LOUV:3TY1Rxj9lgwxia1S87isRGDanLbKe/oBKPgwGaEi'
+
+
+
+export AIRFLOW_CONN_S3_CONN='{
+    "conn_type": "aws",
+    "description":"",
+    "login": "AKIAUEX4HUD5N5B4LOUV",
+    "password": "3TY1Rxj9lgwxia1S87isRGDanLbKe/oBKPgwGaEi",
+    "host": "",
+    "port": null,
+    "schema": "my-schema",
+    "extra": ""
+}'
+
+
+airflow:
+  connectors:
+    - name: s3_conn
+      conn_type: mysql
+      extra: "{"host":"my-mysql-host","port":"3306","username":"myuser","password":"mypassword","schema":"mydb"}"
+    - name: postgres
+      conn_type: postgres
+      extra: "{"host":"my-postgres-host","port":"5432","username":"myuser","password":"mypassword","schema":"mydb"}"
